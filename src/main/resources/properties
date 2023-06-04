@@ -3,8 +3,9 @@ db.driver=com.mysql.cj.jdbc.Driver
 db.url=jdbc:mysql://localhost:3306/users
 db.username=root
 db.password=Ghtyjhkl,[30]
+db.entity.package=kata_task_2_3_1.model
 
 # Hibernate properties
+hibernate.dialect=org.hibernate.dialect.MySQL8Dialect
 hibernate.show_sql=true
-hibernate.hbm2ddl.auto=update
-db.entity.package=kata_task_2_3_1.model
+hibernate.hbm2ddl.auto=validate
