@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
@@ -10,15 +9,15 @@
 <h2>Add user info</h2>
 <br>
 
-<form method="post" action="/saveUser">
-
     <form th:method="post" th:action="@{/users/addNew}" th:object="${user}">
         <label for="name">Name</label>
         <input type="text" th:field="*{name}" id="name"/>
         <br><br>
+
         <label for="lastName">Last name</label>
         <input type="text" th:field="*{surname}" id="lastName"/>
         <br><br>
+
         <input type="submit" value="Add"/>
     </form>
 
