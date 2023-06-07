@@ -1,11 +1,9 @@
 package kata_task_2_3_1.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.PropertySource;
+import org.springframework.context.annotation.*;
 import org.springframework.core.env.Environment;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
@@ -19,9 +17,10 @@ import javax.sql.DataSource;
 import java.util.Properties;
 
 @Configuration
-@PropertySource("classpath:properties")
-@EnableTransactionManagement
 @ComponentScan(value = "kata_task_2_3_1")
+@PropertySource("classpath:properties")
+@EnableJpaRepositories(value = "kata_task_2_3_1.dao")
+@EnableTransactionManagement
 public class DatabaseConfig {
 
     private final Environment environment;
@@ -60,7 +59,7 @@ public class DatabaseConfig {
     }
 
     @Bean
-    public PlatformTransactionManager getplatformTransactionManager(EntityManagerFactory entityManagerFactory) {
+    public JpaTransactionManager transactionManager(EntityManagerFactory entityManagerFactory) {
         JpaTransactionManager transactionManager = new JpaTransactionManager();
         transactionManager.setEntityManagerFactory(entityManagerFactory);
         return transactionManager;

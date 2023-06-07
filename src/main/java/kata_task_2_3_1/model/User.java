@@ -25,6 +25,11 @@ public class User {
         this.surname = surname;
     }
 
+    public User(String name, String surname) {
+        this.name = name;
+        this.surname = surname;
+    }
+
     public int getId() {
         return id;
     }
