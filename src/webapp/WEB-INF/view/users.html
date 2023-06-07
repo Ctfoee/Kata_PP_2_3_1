@@ -6,32 +6,31 @@
 </head>
 
 <body>
-
-<h2>Users:</h2>
+<h3>Users</h3>
 <br>
-
 <table>
-  <tr>
-    <th>ID</th>
-    <th>Name</th>
-    <th>Surname</th>
-  </tr>
-
-    <th:block th:each="user : ${allUsers}">
+    <div th:each="user : ${allUsers}">
         <tr>
-            <td>${user.getId}</td>
-            <td>${user.getName}</td>
-            <td>${user.getSurname}</td>
+            <td>
+                <a th:href="@{/users/{id}(id=${user.getId()})}"
+                   th:text="|${user.getSurname()} ${user.getName()}|"></a>
+            </td>
+            <td>
+                <form th:method="get" th:action="@{/users/{id}/update(id=${user.getId()})}">
+                    <input type="submit" value="Update user"/>
+                </form>
+            </td>
+            <td>
+                <form th:method="delete" th:action="@{/users/{id}(id=${user.getId()})}">
+                    <input type="submit" value="Delete user"/>
+                </form>
+            </td>
         </tr>
-    </th:block>
-
-
+    </div>
 </table>
-
 <br>
-
-<input type="button" value="Add"
-onclick="window.location.href = 'users/addNew'"/>
-
+<form th:method="get" th:action="@{/users/addNew}">
+    <input type="submit" value="Add new user"/>
+</form>
 </body>
 </html>

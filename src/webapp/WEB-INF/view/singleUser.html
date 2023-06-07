@@ -6,9 +6,9 @@
 </head>
 <body>
     <div th:if="${user} != null">
-        <p th:text="|ID : ${user.id}|"></p>
-        <p th:text="|Name : ${user.name}|"></p>
-        <p th:text="|Surname : ${user.surname}|"></p>
+        <p th:text="|ID : ${user.getId()}|"></p>
+        <p th:text="|Name : ${user.getName()}|"></p>
+        <p th:text="|Surname : ${user.getSurname()}|"></p>
     </div>
     <h1 th:if="${user} == null" th:text="|User not found|"></h1>
     <a th:href="@{/users}">Back</a>

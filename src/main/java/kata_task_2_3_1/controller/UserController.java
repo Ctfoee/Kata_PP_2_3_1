@@ -15,7 +15,7 @@ public class UserController {
     private final UserService userService;
 
     @Autowired
-    public UserController(UserServiceImpl userService) {
+    public UserController(UserService userService) {
         this.userService = userService;
     }
 
@@ -47,14 +47,14 @@ public class UserController {
 
     //Update
     @GetMapping("/{id}/update")
-    public String updateUser(@PathVariable("id") int id, Model model) {
+    public String updateUserForm(@PathVariable("id") int id, Model model) {
         User user = userService.getSingleUser(id);
         model.addAttribute("user", user);
         return "update";
     }
 
     @PatchMapping("/{id}")
-    public String editUser(@ModelAttribute("user") User user) {
+    public String updateUser(@ModelAttribute("user") User user) {
         userService.addUser(user);
         return "redirect:/users";
     }
