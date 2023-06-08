@@ -2,7 +2,6 @@ package kata_task_2_3_1.controller;
 
 import kata_task_2_3_1.model.User;
 import kata_task_2_3_1.service.UserService;
-import kata_task_2_3_1.service.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,12 +18,6 @@ public class UserController {
         this.userService = userService;
     }
 
-    @GetMapping("")
-    public String allUsers(Model model) {
-        model.addAttribute("allUsers", userService.getAllUsers());
-        return "users";
-    }
-
     // Create
     @GetMapping("/addNew")
     public String addNewUser(Model model) {
@@ -39,10 +32,10 @@ public class UserController {
     }
 
     //Read
-    @GetMapping("/{id}")
-    public String getUser(@PathVariable("id") int id, Model model) {
-        model.addAttribute("user", userService.getSingleUser(id));
-        return "singleUser";
+    @GetMapping("")
+    public String allUsers(Model model) {
+        model.addAttribute("allUsers", userService.getAllUsers());
+        return "users";
     }
 
     //Update

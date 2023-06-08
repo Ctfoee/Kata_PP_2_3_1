@@ -6,14 +6,16 @@
 </head>
 
 <body>
+
 <h3>Users</h3>
 <br>
+
 <table>
     <div th:each="user : ${allUsers}">
         <tr>
             <td>
                 <a th:href="@{/users/{id}(id=${user.getId()})}"
-                   th:text="|${user.getSurname()} ${user.getName()}|"></a>
+                   th:text="|${user.getSurname()} ${user.getName()}|"/>
             </td>
             <td>
                 <form th:method="get" th:action="@{/users/{id}/update(id=${user.getId()})}">
@@ -29,8 +31,10 @@
     </div>
 </table>
 <br>
+
 <form th:method="get" th:action="@{/users/addNew}">
     <input type="submit" value="Add new user"/>
 </form>
+
 </body>
 </html>

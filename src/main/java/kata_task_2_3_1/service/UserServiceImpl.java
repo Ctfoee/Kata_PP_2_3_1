@@ -1,7 +1,6 @@
 package kata_task_2_3_1.service;
 
 import kata_task_2_3_1.dao.UserDao;
-import kata_task_2_3_1.dao.UserDaoImpl;
 import kata_task_2_3_1.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
