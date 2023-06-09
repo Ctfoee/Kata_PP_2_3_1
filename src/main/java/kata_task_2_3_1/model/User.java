@@ -1,9 +1,20 @@
 package kata_task_2_3_1.model;
 
+
+
+import javax.validation.ConstraintViolation;
+import javax.validation.Validator;
+
+
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+import java.util.Set;
+
 
 @Entity
 @Table(name = "users")
+
 public class User {
 
     @Id
@@ -12,9 +23,13 @@ public class User {
     private int id;
 
     @Column(name = "name")
+    @NotNull
+    @Pattern(regexp = "[A-zА-я]+", message = "Invalid name")
     private String name;
 
     @Column(name = "surname")
+    @NotNull
+    @Pattern(regexp = "[A-zА-я]+", message = "Invalid surname")
     private String surname;
 
     public User() {}
@@ -51,4 +66,10 @@ public class User {
                 ", surname='" + surname + '\'' +
                 '}';
     }
+
+    public boolean validate(Validator validator) {
+        Set<ConstraintViolation<User>> constraintViolations = validator.validate(this);
+        return constraintViolations.size() == 0;
+    }
+
 }
