@@ -29,8 +29,12 @@ public class UserController {
 
     @PostMapping("/addNew")
     public String saveUser(@ModelAttribute("user") User user) {
-        userService.addUser(user);
-        return "redirect:/users";
+        if (user.validate(userService.validator())) {
+            userService.addUser(user);
+            return "redirect:/users";
+        } else {
+            return "error";
+        }
     }
 
     //Read
@@ -50,8 +54,12 @@ public class UserController {
 
     @PatchMapping("/{id}")
     public String updateUser(@ModelAttribute("user") User user) {
-        userService.addUser(user);
-        return "redirect:/users";
+        if (user.validate(userService.validator())) {
+            userService.addUser(user);
+            return "redirect:/users";
+        } else {
+            return "error";
+        }
     }
 
     //Delete

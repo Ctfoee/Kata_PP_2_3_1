@@ -2,6 +2,7 @@ package kata_task_2_3_1.service;
 
 import kata_task_2_3_1.model.User;
 
+import javax.validation.Validator;
 import java.util.List;
 
 public interface UserService {
@@ -12,4 +13,6 @@ public interface UserService {
     User getSingleUser(int id);
 
     void deleteUser(int id);
+
+    Validator validator();
 }
